@@ -1,10 +1,10 @@
 {
-  "name": "gatsby-starter-ghost",
-  "description": "A starter template to build lightning fast websites with Ghost and Gatsby",
+  "name": "everything-technical-writing",
+  "description": "Everything on building a technical writing career or using technical content marketing to excel",
   "version": "2.0.0",
   "license": "MIT",
-  "author": "Ghost Foundation",
-  "homepage": "https://docs.ghost.org/api/gatsby/",
+  "author": "Linda Ikechukwu",
+  "homepage": "https://everythingtechnicalwriting.com/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tryghost/gatsby-starter-ghost.git"
