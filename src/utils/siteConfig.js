@@ -1,10 +1,10 @@
 module.exports = {
-    siteUrl: `http://localhost:8000`, // Site domain. Do not include a trailing slash!
+    siteUrl: `https://www.everythingtechnicalwriting.com/`, // Site domain. Do not include a trailing slash!
 
     postsPerPage: 12, // Number of posts shown on paginated pages (changes this requires sometimes to delete the cache)
 
     siteTitleMeta: `Everything Technical Writing`, // This allows an alternative site title for meta data for pages.
-    siteDescriptionMeta: `Everything you need to know to become a technical writer written by a technical writer`, // This allows an alternative site description for meta data for pages.
+    siteDescriptionMeta: `Everything you need to know to become a technical writer or use technical content marketing to scale your company`, // This allows an alternative site description for meta data for pages.
 
     shareImageWidth: 1000, // Change to the width of your default share image
     shareImageHeight: 523, // Change to the height of your default share image
