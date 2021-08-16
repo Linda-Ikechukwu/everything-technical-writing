@@ -6,7 +6,7 @@ const AboutPage = () => (
     <Layout>
         <div className="container aboutpage">
             <div className="aboutpage-image">
-                <img src="../images/myself.jpeg"></img>
+                <img src="images/myself.jpeg"></img>
             </div>
             <div className="aboutpage-content">
                 <h2>You don't have to be Shakespeare or Linus Torvalds to be a technical writer!</h2>
