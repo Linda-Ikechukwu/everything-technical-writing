@@ -2,7 +2,8 @@ import React from 'react'
 
 const SubscriptionForm = () => {
     return (
-        <div class="sub-form">
+        <div className="sub-form" id="subscribe-form">
+            <div className="container"> 
             <div className="sub-form-half">
                 <h2>Subscribe to the newsletter!</h2>
                 <p>My goal with this blog is to connect the dots for people who want to either  <strong>build a 
@@ -13,7 +14,7 @@ const SubscriptionForm = () => {
             <div id="revue-embed" className="sub-form-half">
                 <form action="https://www.getrevue.co/profile/_mslinda/add_subscriber" method="post" id="revue-form" name="revue-form" target="_blank">
                     <div className="revue-form-group">
-                        <label for="member_email" class="visually-hidden">Email address</label>
+                        <label htmlFor="member_email" className="visually-hidden">Email address</label>
                         <input className="revue-form-field" placeholder="Your email address..." type="email" name="member[email]" id="member_email"></input>
                     </div>
                     <div className="revue-form-actions">
@@ -25,6 +26,8 @@ const SubscriptionForm = () => {
                     </div>
                 </form>
             </div>
+            </div>
+            
         </div>
 
 

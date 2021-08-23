@@ -57,6 +57,8 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                 <div className="site-banner">
                                     <h1 className="site-banner-title">{site.title}</h1>
                                     <p className="site-banner-desc">{site.description}</p>
+                                    <p className="site-banner-desc-2">You don't have to be Shakespeare or Linus Torvalds to become a technical writer or leverage technical writing to grow your startup! Learn how.</p>
+                                    <a className="site-banner-subscribe" href="#subscribe-form">Subsribe to the Newsletter</a>
                                 </div> :
                                 null}
                             <nav className="site-nav">

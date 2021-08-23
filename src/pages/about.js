@@ -9,7 +9,7 @@ const AboutPage = () => (
                 <img src="images/myself.jpeg"></img>
             </div>
             <div className="aboutpage-content">
-                <h2>You don't have to be Shakespeare or Linus Torvalds to be a technical writer!</h2>
+                <h2>You don't have to be Shakespeare or Linus Torvalds to become a technical writer or leverage technical writing to grow your startup!</h2>
                 <p>Hello, my name is Linda Ikechukwu <a href="https://twitter.com/_mslinda">(@_msLinda)</a> — the human behind everythingtechnicalwriting.com. </p>
                     
                 <p>I used to be a full time frontend engineer before I somehow found myself in the world of technical 
