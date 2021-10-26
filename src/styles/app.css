@@ -539,7 +539,7 @@ h6 {
 }
 
 .container {
-    max-width: 1120px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 0 4vw;
 }
@@ -557,7 +557,7 @@ h6 {
 }
 
 .post-full-content {
-    margin: 50px auto;
+    margin: 40px auto;
     background: #fff;
     position: relative;
 }
@@ -573,7 +573,7 @@ h6 {
     position: absolute;
     top: 200px;
     left: auto;
-    right: -150px;
+    right: -200px;
     width: 100px;
     height: 100vh;
 }

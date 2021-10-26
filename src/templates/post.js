@@ -9,7 +9,7 @@ import { MetaData } from '../components/common/meta'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons'
-import { readingTime as readingTimeHelper } from '@tryghost/helpers'
+
 /**
 * Single post view (/:slug)
 *
@@ -18,9 +18,7 @@ import { readingTime as readingTimeHelper } from '@tryghost/helpers'
 */
 const Post = ({ data, location, pageContext }) => {
     const post = data.ghostPost;
-    const readingTime = readingTimeHelper(post);
 
-    console.log(data, pageContext)
     //For the previous and next blog post link
     const prev = pageContext.prev ?
         {
@@ -65,10 +63,7 @@ const Post = ({ data, location, pageContext }) => {
                                         <img className="default-avatar" src="/images/icons/avatar.svg" alt={post.primary_author.name} />
                                     }
                                 </div>
-                                <span>{post.primary_author.name}</span>
-                            </div>
-                            <div className="post-card-footer-right">
-                                <div>{readingTime}</div>
+                                <span><a href={`https://twitter.com/${post.primary_author.twitter}`}>{post.primary_author.name}</a></span>
                             </div>
                         </section>
                         <section className="post-full-content">
@@ -95,47 +90,52 @@ const Post = ({ data, location, pageContext }) => {
                             </div>
                         </section>
                     </article>
-                    <section>
-                        <h2>You may also want to read: </h2>
-                        <div className="post-more-articles">
 
-                            {prev && (
-                                <div>
-                                    <h3>Previous: </h3>
-                                    <Link to={prev.url} className="post-card">
-                                        <header className="post-card-header">
-                                            {prev.featureImage &&
-                                                <div className="post-card-image" style={{
-                                                    backgroundImage: `url(${prev.featureImage})`,
-                                                }}></div>}
-                                            <h2 className="post-card-title">{prev.title}</h2>
-                                        </header>
-                                        <section className="post-card-excerpt">{prev.excerpt}</section>
-                                    </Link>
-                                </div>
-                            )}
+                    {(prev || next) && (
+                        <section>
+                            <h2>You may also want to read: </h2>
+                            <div className="post-more-articles">
 
-
-                            {next && (
-                                <div>
-                                    <h3>Next: </h3>
-                                    <Link to={next.url} className="post-card">
-                                        <header className="post-card-header">
-                                            {next.featureImage &&
-                                                <div className="post-card-image" style={{
-                                                    backgroundImage: `url(${next.featureImage})`,
-                                                }}></div>}
-                                            <h2 className="post-card-title">{next.title}</h2>
-                                        </header>
-                                        <section className="post-card-excerpt">{next.excerpt}</section>
-                                    </Link>
-                                </div>
-                            )}
+                                {prev && (
+                                    <div>
+                                        <h3>Previous: </h3>
+                                        <Link to={prev.url} className="post-card">
+                                            <header className="post-card-header">
+                                                {prev.featureImage &&
+                                                    <div className="post-card-image" style={{
+                                                        backgroundImage: `url(${prev.featureImage})`,
+                                                    }}></div>}
+                                                <h2 className="post-card-title">{prev.title}</h2>
+                                            </header>
+                                            <section className="post-card-excerpt">{prev.excerpt}</section>
+                                        </Link>
+                                    </div>
+                                )}
 
 
+                                {next && (
+                                    <div>
+                                        <h3>Next: </h3>
+                                        <Link to={next.url} className="post-card">
+                                            <header className="post-card-header">
+                                                {next.featureImage &&
+                                                    <div className="post-card-image" style={{
+                                                        backgroundImage: `url(${next.featureImage})`,
+                                                    }}></div>}
+                                                <h2 className="post-card-title">{next.title}</h2>
+                                            </header>
+                                            <section className="post-card-excerpt">{next.excerpt}</section>
+                                        </Link>
+                                    </div>
+                                )}
 
-                        </div>
-                    </section>
+
+
+                            </div>
+                        </section>
+                    )}
+
+
                 </div>
 
             </Layout>
