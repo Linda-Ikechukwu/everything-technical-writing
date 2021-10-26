@@ -947,10 +947,17 @@ h6 {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    flex-wrap:wrap;
 }
 
 .post-more-articles > div{
     width: 47%;
+}
+
+@media (max-width: 550px) {
+    .post-more-articles > div{
+        width: 100%;
+     }
 }
 
 .post-more-articles>div .post-card{
