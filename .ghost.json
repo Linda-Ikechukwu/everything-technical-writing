@@ -1,10 +1,10 @@
 {
   "development": {
-    "apiUrl": "https://everything-technical-writing.herokuapp.com",
-    "contentApiKey": "a68e0c0d3e3d93151f0c9553ac"
+    "apiUrl": "https://everythingtechnicalwriting.herokuapp.com",
+    "contentApiKey": "cef38dcd6644951eaf840fb92b"
   },
   "production": {
-    "apiUrl": "https://everything-technical-writing.herokuapp.com",
-    "contentApiKey": "a68e0c0d3e3d93151f0c9553ac"
+    "apiUrl": "https://everythingtechnicalwriting.herokuapp.com",
+    "contentApiKey": "cef38dcd6644951eaf840fb92b"
   }
 }
