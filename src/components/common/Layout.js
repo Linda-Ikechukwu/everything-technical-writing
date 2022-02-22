@@ -9,7 +9,7 @@ import { SubscriptionForm } from '.'
 import config from '../../utils/siteConfig'
 
 // Styles
-import '../../styles/app.css'
+import '../../styles/app.scss'
 
 /**
 * Main layout component
@@ -33,10 +33,36 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
             </Helmet>
 
             <div className="viewport">
+                <header>
+                    <div className="container">
+                        <div className="nav">
+                            <div className="nav-logo">
+                                <Link to="/">
+                                    <img src="images/etw-logo.svg" alt={site.title} />
+                                </Link>
+                            </div>
+                            <nav>
+                                <Navigation data={site.navigation} navClass="nav-item" />
+                                <Link className="nav-item" to="/about">About</Link>
+                            </nav>
+                            <div className="nav-subscribe gradient-text">
+                                <a className="" href="#subscribe-form">Subsribe to the Newsletter ➔</a>
+                            </div>
+                        </div>
+                        <div className="heading">
+                            <h1 className="heading-main">Your one stop blog for all things 
+                                <span className="gradient-text"> technical writing</span>
+                            </h1>
+                            <p className="heading-byline">
+                                Read articles on tips, tricks and techniques that'll help you thrive as a technical writer in the software industry.
+                            </p>
+                        </div>
+                    </div>
+                </header>
+                
 
-                <div className="viewport-top">
-                    {/* The main header section on top of the screen */}
-                    <header className="site-head" style={{ ...site.cover_image && { backgroundImage: `url(${site.cover_image})` } }}>
+                {/* The main header section on top of the screen */}
+                {/* <header className="site-head" style={{ ...site.cover_image && { backgroundImage: `url(${site.cover_image})` } }}>
                         <div className="container">
                             <div className="site-mast">
                                 <div className="site-mast-left">
@@ -63,7 +89,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                 null}
                             <nav className="site-nav">
                                 <div className="site-nav-left">
-                                    {/* The navigation items as setup in Ghost */}
+                                    
                                     <Navigation data={site.navigation} navClass="site-nav-item" />
                                 </div>
                                 <div className="site-nav-right">
@@ -74,7 +100,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     </header>
 
                     <main className="site-main">
-                        {/* All the main content gets inserted here, index.js, post.js */}
+                        {/* All the main content gets inserted here, index.js, post.js 
                         {children}
                     </main>
 
@@ -82,7 +108,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
 
                 <div className="viewport-bottom">
                     <SubscriptionForm />
-                    {/* The footer at the very bottom of the screen */}
+                    {/* The footer at the very bottom of the screen 
                     <footer className="site-foot">
                         <div className="site-foot-nav container">
                             <div className="site-foot-nav-left">
@@ -94,7 +120,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                         </div>
                     </footer>
 
-                </div>
+                </div>*/}
             </div>
 
         </>
