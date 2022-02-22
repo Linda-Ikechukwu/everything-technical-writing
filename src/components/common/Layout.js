@@ -65,7 +65,27 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     <div className="container">
                         {/* All the main content (posts and pagination) gets inserted here, index.js, post.js */}
                         {children}
+
                         <SubscriptionForm />
+
+                        <footer className="footer">
+                            <div className="footer-item">
+                                <Link to="/">{site.title}</Link> © {new Date().getFullYear()}
+                            </div>
+
+                            <div className="footer-item">
+                               Designed by <Link to="https://twitter.com/LuluNwenyi"> Lulu Nwenyi</Link> 
+                            </div>
+
+                            <div className="footer-item">
+                               Created by <Link to="https://twitter.com/_MsLinda"> Linda Ikechukwu</Link>
+                            </div>
+
+                            <div className="footer-item">
+                                Built with Ghost & Gatsby
+                            </div>
+                        </footer>
+
                     </div>
                 </main>
 
