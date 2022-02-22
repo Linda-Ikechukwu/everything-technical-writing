@@ -33,33 +33,41 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
             </Helmet>
 
             <div className="viewport">
-                <header>
+                <div className="hero-bg">
                     <div className="container">
-                        <div className="nav">
-                            <div className="nav-logo">
-                                <Link to="/">
-                                    <img src="images/etw-logo.svg" alt={site.title} />
-                                </Link>
+                        <header>
+                            <div className="nav">
+                                <div className="nav-logo">
+                                    <Link to="/">
+                                        <img src="images/etw-logo.svg" alt={site.title} />
+                                    </Link>
+                                </div>
+                                <nav>
+                                    <Navigation data={site.navigation} navClass="nav-item" />
+                                    <Link className="nav-item" to="/about">About</Link>
+                                </nav>
+                                <div className="nav-subscribe gradient-text">
+                                    <a className="" href="#subscribe-form">Subsribe to the Newsletter ➔</a>
+                                </div>
                             </div>
-                            <nav>
-                                <Navigation data={site.navigation} navClass="nav-item" />
-                                <Link className="nav-item" to="/about">About</Link>
-                            </nav>
-                            <div className="nav-subscribe gradient-text">
-                                <a className="" href="#subscribe-form">Subsribe to the Newsletter ➔</a>
+                            <div className="site-heading">
+                                <h1 className="site-heading-main">Your one stop blog for all things
+                                    <span className="gradient-text"> technical writing</span>
+                                </h1>
+                                <p className="site-heading-byline">
+                                    Read articles on tips, tricks and techniques that'll help you thrive as a technical writer in the software industry.
+                                </p>
                             </div>
-                        </div>
-                        <div className="heading">
-                            <h1 className="heading-main">Your one stop blog for all things 
-                                <span className="gradient-text"> technical writing</span>
-                            </h1>
-                            <p className="heading-byline">
-                                Read articles on tips, tricks and techniques that'll help you thrive as a technical writer in the software industry.
-                            </p>
-                        </div>
+                        </header>
                     </div>
-                </header>
-                
+                </div>
+                <main>
+                    <div className="container">
+                        {/* All the main content (posts and pagination) gets inserted here, index.js, post.js */}
+                        {children}
+                        <SubscriptionForm />
+                    </div>
+                </main>
 
                 {/* The main header section on top of the screen */}
                 {/* <header className="site-head" style={{ ...site.cover_image && { backgroundImage: `url(${site.cover_image})` } }}>

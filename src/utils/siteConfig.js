@@ -1,7 +1,7 @@
 module.exports = {
     siteUrl: `https://www.everythingtechnicalwriting.com`, // Site domain. Do not include a trailing slash!
 
-    postsPerPage: 12, // Number of posts shown on paginated pages (changes this requires sometimes to delete the cache)
+    postsPerPage: 3, // Number of posts shown on paginated pages (changes this requires sometimes to delete the cache)
 
     siteTitleMeta: `Everything Technical Writing`, // This allows an alternative site title for meta data for pages.
     siteDescriptionMeta: `Everything you need to know to become a technical writer or leverage technical content marketing to scale your company`, // This allows an alternative site description for meta data for pages.
