@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 
 const Pagination = ({ pageContext }) => {
     const { previousPagePath, nextPagePath, humanPageNumber, numberOfPages } = pageContext
-    console.log(pageContext)
+    
     return (
         <nav className="pagination" role="navigation">
             <div>

@@ -8,12 +8,12 @@ const PostCard = ({ post }) => {
 
     return (
         <Link to={url} className="blog-feed-card">
-                {post.feature_image &&
+                {/* {post.feature_image &&
                     <div className="blog-feed-card-image" style={{
                         backgroundImage: `url(${post.feature_image})` ,
                     }}>
                     </div>
-                }
+                } */}
                 {post.primary_tag? 
                     <div className="blog-feed-card-category"><span>{`#`+post.primary_tag.name}</span></div> :  
                     <div className="blog-feed-card-category"><span>{"#Introductory"}</span></div>

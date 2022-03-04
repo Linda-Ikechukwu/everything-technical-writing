@@ -19,7 +19,7 @@ import '../../styles/app.scss'
 * styles, and meta data for each page.
 *
 */
-const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
+const DefaultLayout = ({ data, children, bodyClass, isHome, isBlog, postInfo }) => {
     const site = data.allGhostSettings.edges[0].node
     const twitterUrl = site.twitter ? `https://twitter.com/${site.twitter.replace(/^@/, ``)}` : null
     const facebookUrl = site.facebook ? `https://www.facebook.com/${site.facebook.replace(/^\//, ``)}` : null
@@ -28,7 +28,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         <>
             <Helmet>
                 <html lang={site.lang} />
-                <script async src="https://www.googletagmanager.com/gtag/js?id=G-WVRJ6VCBM9"></script>
                 <body className={bodyClass} />
             </Helmet>
 
@@ -50,14 +49,47 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     <a className="" href="#subscribe-form">Subsribe to the Newsletter ➔</a>
                                 </div>
                             </div>
-                            <div className="site-heading">
-                                <h1 className="site-heading-main">Your one stop blog for all things
-                                    <span className="gradient-text"> technical writing</span>
-                                </h1>
-                                <p className="site-heading-byline">
-                                    Read articles on tips, tricks and techniques that'll help you thrive as a technical writer in the software industry.
-                                </p>
-                            </div>
+                            {isHome ?
+                                <div className="page-heading">
+                                    <div className="page-heading-main">
+                                        <h1 className="page-heading-title">Your one stop blog for all things
+                                            <span className="gradient-text"> technical writing</span>
+                                        </h1>
+                                        <p className="page-heading-byline">
+                                            Read articles on tips, tricks and techniques that'll help you thrive as a technical writer in the software industry.
+                                        </p>
+                                    </div>
+                                </div>
+                                :
+                                isBlog ?
+                                    <div className="page-heading">
+                                        <div className="page-heading-main">
+                                            {postInfo.Category ?
+                                                <div className="blog-feed-card-category"><span>{postInfo.Category.name}</span></div> :
+                                                <div className="blog-feed-card-category"><span>{"#General"}</span></div>
+                                            }
+                                            <h1 className="page-heading-title">{postInfo.Title}</h1>
+                                            <div className="author-bio">
+                                                <div className="author-bio-avatar">
+                                                    {postInfo.Author?
+                                                        <img className="author-bio-image" src={postInfo.Author.profile_image} /> :
+                                                        <img className="default-avatar" src="/images/icons/avatar.svg" />
+                                                    }
+                                                </div>
+                                                <p className="page-heading-byline">
+                                                    <a href={`/about`}>{postInfo.Author.name}</a>
+                                                </p>
+                                                <p className="page-heading-byline">|</p>
+                                                <p className="page-heading-byline">{postInfo.Date}</p>
+                                            </div>
+                                        </div>
+                                        <div className="page-heading-side">
+                                            <div className="share-button"><span>SHARE</span></div>
+                                        </div>
+                                    </div>
+                                    : null
+                            }
+
                         </header>
                     </div>
                 </div>
@@ -74,11 +106,11 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                             </div>
 
                             <div className="footer-item">
-                               Designed by <Link to="https://twitter.com/LuluNwenyi"> Lulu Nwenyi</Link> 
+                                Designed by <Link to="https://twitter.com/LuluNwenyi"> Lulu Nwenyi</Link>
                             </div>
 
                             <div className="footer-item">
-                               Created by <Link to="https://twitter.com/_MsLinda"> Linda Ikechukwu</Link>
+                                Created by <Link to="https://twitter.com/_MsLinda"> Linda Ikechukwu</Link>
                             </div>
 
                             <div className="footer-item">
@@ -107,13 +139,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     <a className="site-nav-item" href={`https://feedly.com/i/subscription/feed/${config.siteUrl}/rss/`} target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/rss.svg" alt="RSS Feed" /></a>
                                 </div>
                             </div>
-                            {isHome ?
-                                <div className="site-banner">
-                                    <h1 className="site-banner-title">{site.title}</h1>
-                                    <p className="site-banner-desc">{site.description}</p>
-                                    <p className="site-banner-desc-2">You don't have to be Shakespeare or Linus Torvalds to become a technical writer or leverage technical writing to grow your startup! Learn how.</p>
-                                    <a className="site-banner-subscribe" href="#subscribe-form">Subsribe to the Newsletter</a>
-                                </div> :
+                            {isHome ?:
                                 null}
                             <nav className="site-nav">
                                 <div className="site-nav-left">
