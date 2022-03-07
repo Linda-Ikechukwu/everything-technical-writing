@@ -2,42 +2,57 @@ import React from 'react'
 import { Link } from 'gatsby'
 import { Layout } from '../components/common'
 
-const AboutPage = () => (
-    <Layout>
-        <div className="container aboutpage">
-            <div className="aboutpage-image">
-                <img src="images/myself.jpeg"></img>
+const AboutPage = () => {
+
+    const pageInfo = {
+        title: "About",
+        byline: "Your one stop blog for all things technical writing in the software industry."
+    }
+
+    return (
+        <Layout isPage={true} pageInfo={pageInfo}>
+            <div className="aboutpage">
+                <div className="aboutpage-image">
+                    <img src="images/me.jpeg"></img>
+                </div>
+                <div className="aboutpage-content">
+                    <h2>Hello, my name is Linda Ikechukwu <a href="https://twitter.com/_mslinda">(@_msLinda)</a> </h2>
+
+                    <p>I am the human behind everythingtechnicalwriting.com.</p>
+
+                    <p>
+                        I started my career in tech as a frontend developer.
+                        However, I soon realized that I enjoyed educating and writing to simplify
+                        the complex than writing production code.
+                    </p>
+
+                    <p>
+                        That was how I found myself in the field of technical writing, focused on developer marketing and developer education.
+                        During this time, I have worked with tech startups in the mobile CI/CD, data pipeline, no-code, and web3 education industries.
+                    </p>
+
+                    <h2>Why did I start this blog?</h2>
+                    <p>
+                        While transitioning from frontend developer to technical writer in the software industry, I discovered two things:
+                    </p>
+                    <ul>
+                        <li>There wasn't much awareness that technical writing is a viable and lucrative career path, just like programming is.</li>
+                        <li>There was a deficit of exhaustive resources on the techniques and intricacies of technical writing as a career in the software industry. </li>
+                    </ul>
+                    <p> So, I started this website to contribute my quota to fixing both narratives. With everythingtechnicalwriting.com, I will: </p>
+                    <ul>
+                        <li>Raise awareness on the viability and lucrative nature of various technical writing careers.</li>
+                        <li>Write <b>articles that detail my learnings and experience as a technical writer</b> to build an exhaustive technical writing resource bank.</li>
+                        <li>Bring you <b>interviews with seasoned technical writers</b> about how they got their start and overcame obstacles in their careers so you can stand on the shoulders of giants as you navigate your own career</li>
+                        <li>Help you <b>become a better and sought-after technical writer</b>.</li>
+                    </ul>
+                    <p>So, if you're thinking of making a transition to become a technical writer, or you want to skill up in technical writing, then you're at the right place. </p>
+                    <p>Browse through articles on the site, and <a className="gradient-text" href="#subscribe-form">SUBSCRIBE TO THE NEWSLETTER↓</a> for valuable career tips and curated remote technical writing jobs. </p>
+                    <p>If you love what I do and would like to support me, <a href="https://www.buymeacoffee.com/lindaikechukwu">Buy me a coffee.</a></p>
+                </div>
             </div>
-            <div className="aboutpage-content">
-                <h2>You don't have to be Shakespeare or Linus Torvalds to become a technical writer or leverage technical writing to grow your startup!</h2>
-                <p>Hello, my name is Linda Ikechukwu <a href="https://twitter.com/_mslinda">(@_msLinda)</a> — the human behind everythingtechnicalwriting.com. </p>
-                    
-                <p>I used to be a full time frontend engineer before I somehow found myself in the world of technical 
-                    writing — strategising on and creating written content for some of the world’s biggest tech startups.
-                </p> 
-
-                <h3>Ok, so why did I start this blog?</h3>
-
-                {/* img src="../images/about-tweet.png"></img> */}
-
-                <p>
-                    I made this <a href="https://twitter.com/_MsLinda/status/1389893412669820929">tweet</a> sometime in May, and based on the questions and feedback I got, I realized
-                    that most people did not even know that Technical Writing is a viable career path or that technical content marketing is a thing.
-                </p>
-                <p>
-                I created this blog to change that narrative. I plan to write jargon-free, practical articles 
-                (just like on  <a href="https://www.codewithlinda.com/">codewithlinda.com</a>, my frontend development blog) based on my own learnings and 
-                experience creating technical content for startups, to help:
-                </p>
-                <ul>
-                    <li>People who want to build a career in technical writing (either full-time or freelance)</li>
-                    <li>People understand the intricacies of technical writing and technical content marketing</li>
-                    <li>Tech startups who want to understand how to leverage written content to accelerate growth and connect with their target customers</li>
-                </ul>
-                <p> If you fit any of those profiles, stick around or subscribe. New content coming up soon!</p>
-            </div>
-        </div>
-    </Layout>
-)
+        </Layout>
+    )
+}
 
 export default AboutPage

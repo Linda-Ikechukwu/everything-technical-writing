@@ -7,15 +7,19 @@ const PostCard = ({ post }) => {
     const url = `/${post.slug}/`
 
     return (
-        <Link to={url} className="post-card">
-            <header className="post-card-header">
-                {post.feature_image &&
-                    <div className="post-card-image" style={{
+        <Link to={url} className="blog-feed-card">
+                {/* {post.feature_image &&
+                    <div className="blog-feed-card-image" style={{
                         backgroundImage: `url(${post.feature_image})` ,
-                    }}></div>}
-                {post.featured && <span>Featured</span>}
-                <h2 className="post-card-title">{post.title}</h2>
-            </header>
+                    }}>
+                    </div>
+                } */}
+                {post.primary_tag? 
+                    <div className="blog-feed-card-category"><span>{`#`+post.primary_tag.name}</span></div> :  
+                    <div className="blog-feed-card-category"><span>{"#Introductory"}</span></div>
+                }
+                <h2 className="blog-feed-card-title">{post.title}</h2>
+            
         </Link>
     )
 }

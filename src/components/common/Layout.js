@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { Link, StaticQuery, graphql } from 'gatsby'
@@ -9,7 +9,8 @@ import { SubscriptionForm } from '.'
 import config from '../../utils/siteConfig'
 
 // Styles
-import '../../styles/app.css'
+import '../../styles/app.scss'
+
 
 /**
 * Main layout component
@@ -19,24 +20,138 @@ import '../../styles/app.css'
 * styles, and meta data for each page.
 *
 */
-const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
+const DefaultLayout = ({ data, children, bodyClass, isHome, isBlog, isPage, postInfo, pageInfo }) => {
     const site = data.allGhostSettings.edges[0].node
-    const twitterUrl = site.twitter ? `https://twitter.com/${site.twitter.replace(/^@/, ``)}` : null
-    const facebookUrl = site.facebook ? `https://www.facebook.com/${site.facebook.replace(/^\//, ``)}` : null
+
+    const [shareBtnText, setShareBtnText] = useState('share this article');
+
+    const handlePostShare = () => {
+        if (navigator.share) {
+            navigator.share({
+                title: postInfo.title,
+                url: postInfo.url,
+            }).then(() => {
+                setShareBtnText('Thanks for sharing!');
+            })
+                .catch(console.error);
+        } else {
+            navigator.clipboard.writeText(postInfo.url).then(() => {
+                setShareBtnText('Article link copied to clipboard!');
+            }).catch(
+                setShareBtnText('Couldnt copy article link clipboard!')
+            )
+        }
+    }
 
     return (
         <>
             <Helmet>
                 <html lang={site.lang} />
-                <script async src="https://www.googletagmanager.com/gtag/js?id=G-WVRJ6VCBM9"></script>
                 <body className={bodyClass} />
             </Helmet>
 
             <div className="viewport">
+                <div className="hero-bg">
+                    <div className="container">
+                        <header>
+                            <div className="nav">
+                                <div className="nav-logo">
+                                    <Link to="/">
+                                        <img src="../images/etw-logo.svg" alt={site.title} />
+                                    </Link>
+                                </div>
+                                <nav>
+                                    <Navigation data={site.navigation} navClass="nav-item" />
+                                    <Link className="nav-item" to="/about">About</Link>
+                                </nav>
+                                <div className="nav-subscribe gradient-text">
+                                    <a className="" href="#subscribe-form">Subsribe to the Newsletter ➔</a>
+                                </div>
+                            </div>
+                            {isHome ?
+                                <div className="page-heading">
+                                    <div className="page-heading-main">
+                                        <h1 className="page-heading-title">Your one stop blog for all things
+                                            <span className="gradient-text"> technical writing</span>
+                                        </h1>
+                                        <p className="page-heading-byline">
+                                            Read articles on tips, tricks and techniques that'll help you thrive as a technical writer in the software industry.
+                                        </p>
+                                        <div className="nav-subscribe gradient-text">
+                                            <a className="" href="#subscribe-form">Subsribe to the Newsletter ➔</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                :
+                                isBlog ?
+                                    <div className="page-heading">
+                                        <div className="page-heading-main">
+                                            {postInfo.category ?
+                                                <div className="blog-feed-card-category"><span>{postInfo.category.name}</span></div> :
+                                                <div className="blog-feed-card-category"><span>{"#General"}</span></div>
+                                            }
+                                            <h1 className="page-heading-title">{postInfo.title}</h1>
+                                            <div className="author-bio">
+                                                <div className="author-bio-avatar">
+                                                    <img className="author-bio-image" src="../images/me.jpeg" />
+                                                </div>
+                                                <p className="page-heading-byline">
+                                                    <a href={`/about`}>{postInfo.author.name}</a>
+                                                </p>
+                                                <p className="page-heading-byline">|</p>
+                                                <p className="page-heading-byline">{postInfo.date}</p>
+                                            </div>
+                                        </div>
+                                        <div className="page-heading-side">
+                                            <div className="share-button" onClick={() => handlePostShare()}><span>{shareBtnText.toUpperCase()}</span></div>
+                                        </div>
+                                    </div>
+                                    : isPage ?
+                                        <div className="page-heading">
+                                            <div className="page-heading-main">
+                                                <h1 className="page-heading-title">{pageInfo.title}</h1>
+                                                <p className="page-heading-byline">{pageInfo.byline}</p>
+                                                <div className="nav-subscribe gradient-text">
+                                                    <a className="" href="#subscribe-form">Subsribe to the Newsletter ➔</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        : null
+                            }
 
-                <div className="viewport-top">
-                    {/* The main header section on top of the screen */}
-                    <header className="site-head" style={{ ...site.cover_image && { backgroundImage: `url(${site.cover_image})` } }}>
+                        </header>
+                    </div>
+                </div>
+                <main>
+                    <div className="container">
+                        {/* All the main content (posts and pagination) gets inserted here, index.js, post.js */}
+                        {children}
+
+                        <SubscriptionForm />
+
+                        <footer className="footer">
+                            <div className="footer-item">
+                                <Link to="/">{site.title}</Link> © {new Date().getFullYear()}
+                            </div>
+
+                            <div className="footer-item">
+                                Designed by <a href="https://twitter.com/LuluNwenyi"> Lulu Nwenyi</a>
+                            </div>
+
+                            <div className="footer-item">
+                                Created by <a href="https://twitter.com/_MsLinda"> Linda Ikechukwu</a>
+                            </div>
+
+                            <div className="footer-item">
+                                Built with Ghost & Gatsby
+                            </div>
+                        </footer>
+
+                    </div>
+                </main>
+
+                {/* The main header section on top of the screen */}
+                {/* <header className="site-head" style={{ ...site.cover_image && { backgroundImage: `url(${site.cover_image})` } }}>
                         <div className="container">
                             <div className="site-mast">
                                 <div className="site-mast-left">
@@ -53,17 +168,11 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                                     <a className="site-nav-item" href={`https://feedly.com/i/subscription/feed/${config.siteUrl}/rss/`} target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/rss.svg" alt="RSS Feed" /></a>
                                 </div>
                             </div>
-                            {isHome ?
-                                <div className="site-banner">
-                                    <h1 className="site-banner-title">{site.title}</h1>
-                                    <p className="site-banner-desc">{site.description}</p>
-                                    <p className="site-banner-desc-2">You don't have to be Shakespeare or Linus Torvalds to become a technical writer or leverage technical writing to grow your startup! Learn how.</p>
-                                    <a className="site-banner-subscribe" href="#subscribe-form">Subsribe to the Newsletter</a>
-                                </div> :
+                            {isHome ?:
                                 null}
                             <nav className="site-nav">
                                 <div className="site-nav-left">
-                                    {/* The navigation items as setup in Ghost */}
+                                    
                                     <Navigation data={site.navigation} navClass="site-nav-item" />
                                 </div>
                                 <div className="site-nav-right">
@@ -74,7 +183,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     </header>
 
                     <main className="site-main">
-                        {/* All the main content gets inserted here, index.js, post.js */}
+                        {/* All the main content gets inserted here, index.js, post.js 
                         {children}
                     </main>
 
@@ -82,7 +191,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
 
                 <div className="viewport-bottom">
                     <SubscriptionForm />
-                    {/* The footer at the very bottom of the screen */}
+                    {/* The footer at the very bottom of the screen 
                     <footer className="site-foot">
                         <div className="site-foot-nav container">
                             <div className="site-foot-nav-left">
@@ -94,7 +203,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                         </div>
                     </footer>
 
-                </div>
+                </div>*/}
             </div>
 
         </>

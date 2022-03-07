@@ -3,29 +3,45 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 
 const Pagination = ({ pageContext }) => {
+   
     const { previousPagePath, nextPagePath, humanPageNumber, numberOfPages } = pageContext
 
     return (
-        <nav className="pagination" role="navigation">
-            <div>
-                {previousPagePath && (
+        <div>
+            {numberOfPages > 1 && (
+                <nav className="pagination" role="navigation">
+                    <div>
+                        {previousPagePath && (
 
-                    <Link to={previousPagePath} rel="prev">
-                            Previous
-                    </Link>
+                            <Link className="gradient-text" to={previousPagePath} rel="prev">
+                                ← Previous
+                            </Link>
 
-                )}
-            </div>
-            {numberOfPages > 1 && <div className="pagination-location">Page {humanPageNumber} of {numberOfPages}</div>}
-            <div>
-                {nextPagePath && (
+                        )}
+                    </div>
+                    {numberOfPages > 1 &&
+                        <div className="pagination-boxes">
+                            {[...Array(numberOfPages)].map((e, i) => (
+                                <div key={i}
+                                    className={`pagination-box ${i + 1 == humanPageNumber ? "pagination-box-active" : ""}`}
+                                >
+                                    {i + 1}
+                                </div>
+                            ))}
+                        </div>
 
-                    <Link to={nextPagePath} rel="next">
-                            Next
-                    </Link>
-                )}
-            </div>
-        </nav>
+                    }
+                    <div>
+                        {nextPagePath && (
+
+                            <Link className="gradient-text" to={nextPagePath} rel="next">
+                                Next ➔
+                            </Link>
+                        )}
+                    </div>
+                </nav>
+            )}
+        </div>
     )
 }
 

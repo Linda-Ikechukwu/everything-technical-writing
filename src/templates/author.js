@@ -16,7 +16,8 @@ const Author = ({ data, location, pageContext }) => {
     const posts = data.allGhostPost.edges
     const twitterUrl = author.twitter ? `https://twitter.com/${author.twitter.replace(/^@/, ``)}` : null
     const facebookUrl = author.facebook ? `https://www.facebook.com/${author.facebook.replace(/^\//, ``)}` : null
-
+    
+    
     return (
         <>
             <MetaData
