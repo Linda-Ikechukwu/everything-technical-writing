@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { Link, StaticQuery, graphql } from 'gatsby'
@@ -11,6 +11,7 @@ import config from '../../utils/siteConfig'
 // Styles
 import '../../styles/app.scss'
 
+
 /**
 * Main layout component
 *
@@ -19,10 +20,28 @@ import '../../styles/app.scss'
 * styles, and meta data for each page.
 *
 */
-const DefaultLayout = ({ data, children, bodyClass, isHome, isBlog, postInfo }) => {
+const DefaultLayout = ({ data, children, bodyClass, isHome, isBlog, isPage, postInfo, pageInfo }) => {
     const site = data.allGhostSettings.edges[0].node
-    const twitterUrl = site.twitter ? `https://twitter.com/${site.twitter.replace(/^@/, ``)}` : null
-    const facebookUrl = site.facebook ? `https://www.facebook.com/${site.facebook.replace(/^\//, ``)}` : null
+
+    const [shareBtnText, setShareBtnText] = useState('share this article');
+
+    const handlePostShare = () => {
+        if (navigator.share) {
+            navigator.share({
+                title: postInfo.title,
+                url: postInfo.url,
+            }).then(() => {
+                setShareBtnText('Thanks for sharing!');
+            })
+                .catch(console.error);
+        } else {
+            navigator.clipboard.writeText(postInfo.url).then(() => {
+                setShareBtnText('Article link copied to clipboard!');
+            }).catch(
+                setShareBtnText('Couldnt copy article link clipboard!')
+            )
+        }
+    }
 
     return (
         <>
@@ -38,7 +57,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome, isBlog, postInfo }) 
                             <div className="nav">
                                 <div className="nav-logo">
                                     <Link to="/">
-                                        <img src="images/etw-logo.svg" alt={site.title} />
+                                        <img src="../images/etw-logo.svg" alt={site.title} />
                                     </Link>
                                 </div>
                                 <nav>
@@ -58,36 +77,46 @@ const DefaultLayout = ({ data, children, bodyClass, isHome, isBlog, postInfo }) 
                                         <p className="page-heading-byline">
                                             Read articles on tips, tricks and techniques that'll help you thrive as a technical writer in the software industry.
                                         </p>
+                                        <div className="nav-subscribe gradient-text">
+                                            <a className="" href="#subscribe-form">Subsribe to the Newsletter ➔</a>
+                                        </div>
                                     </div>
                                 </div>
                                 :
                                 isBlog ?
                                     <div className="page-heading">
                                         <div className="page-heading-main">
-                                            {postInfo.Category ?
-                                                <div className="blog-feed-card-category"><span>{postInfo.Category.name}</span></div> :
+                                            {postInfo.category ?
+                                                <div className="blog-feed-card-category"><span>{postInfo.category.name}</span></div> :
                                                 <div className="blog-feed-card-category"><span>{"#General"}</span></div>
                                             }
-                                            <h1 className="page-heading-title">{postInfo.Title}</h1>
+                                            <h1 className="page-heading-title">{postInfo.title}</h1>
                                             <div className="author-bio">
                                                 <div className="author-bio-avatar">
-                                                    {postInfo.Author?
-                                                        <img className="author-bio-image" src={postInfo.Author.profile_image} /> :
-                                                        <img className="default-avatar" src="/images/icons/avatar.svg" />
-                                                    }
+                                                    <img className="author-bio-image" src="../images/me.jpeg" />
                                                 </div>
                                                 <p className="page-heading-byline">
-                                                    <a href={`/about`}>{postInfo.Author.name}</a>
+                                                    <a href={`/about`}>{postInfo.author.name}</a>
                                                 </p>
                                                 <p className="page-heading-byline">|</p>
-                                                <p className="page-heading-byline">{postInfo.Date}</p>
+                                                <p className="page-heading-byline">{postInfo.date}</p>
                                             </div>
                                         </div>
                                         <div className="page-heading-side">
-                                            <div className="share-button"><span>SHARE</span></div>
+                                            <div className="share-button" onClick={() => handlePostShare()}><span>{shareBtnText.toUpperCase()}</span></div>
                                         </div>
                                     </div>
-                                    : null
+                                    : isPage ?
+                                        <div className="page-heading">
+                                            <div className="page-heading-main">
+                                                <h1 className="page-heading-title">{pageInfo.title}</h1>
+                                                <p className="page-heading-byline">{pageInfo.byline}</p>
+                                                <div className="nav-subscribe gradient-text">
+                                                    <a className="" href="#subscribe-form">Subsribe to the Newsletter ➔</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        : null
                             }
 
                         </header>
@@ -106,11 +135,11 @@ const DefaultLayout = ({ data, children, bodyClass, isHome, isBlog, postInfo }) 
                             </div>
 
                             <div className="footer-item">
-                                Designed by <Link to="https://twitter.com/LuluNwenyi"> Lulu Nwenyi</Link>
+                                Designed by <a href="https://twitter.com/LuluNwenyi"> Lulu Nwenyi</a>
                             </div>
 
                             <div className="footer-item">
-                                Created by <Link to="https://twitter.com/_MsLinda"> Linda Ikechukwu</Link>
+                                Created by <a href="https://twitter.com/_MsLinda"> Linda Ikechukwu</a>
                             </div>
 
                             <div className="footer-item">
