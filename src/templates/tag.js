@@ -15,6 +15,12 @@ const Tag = ({ data, location, pageContext }) => {
     const tag = data.ghostTag
     const posts = data.allGhostPost.edges
 
+    const pageInfo = {
+        title: tag.name,
+        byline: tag.description
+    }
+
+
     return (
         <>
             <MetaData
@@ -22,13 +28,9 @@ const Tag = ({ data, location, pageContext }) => {
                 location={location}
                 type="series"
             />
-            <Layout>
-                <div className="container">
-                    <header className="tag-header">
-                        <h1>{tag.name}</h1>
-                        {tag.description ? <p>{tag.description}</p> : null }
-                    </header>
-                    <section className="post-feed">
+            <Layout isPage={true} pageInfo={pageInfo}>
+                <div className="tag">
+                    <section className="blog-feed">
                         {posts.map(({ node }) => (
                             // The tag below includes the markup for each post - components/common/PostCard.js
                             <PostCard key={node.id} post={node} />

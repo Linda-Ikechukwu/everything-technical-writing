@@ -57,7 +57,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome, isBlog, isPage, post
                             <div className="nav">
                                 <div className="nav-logo">
                                     <Link to="/">
-                                        <img src="../images/etw-logo.svg" alt={site.title} />
+                                        <img src="/images/etw-logo.svg" alt={site.title} />
                                     </Link>
                                 </div>
                                 <nav>
