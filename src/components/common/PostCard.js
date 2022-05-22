@@ -5,8 +5,8 @@ import { Link } from 'gatsby'
 
 const PostCard = ({ post }) => {
     const url = `/${post.slug}/`
-    const tagUrl = `/`
-    ///tag/${post.tags[0].slug || primary_tag.slug}/`
+    //console.log(post.primary_tag)
+    const tagUrl = `/tag/${post.primary_tag.slug}/`
     
 
     return (
