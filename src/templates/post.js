@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet'
 import { Layout } from '../components/common'
 import { Link } from 'gatsby'
 import { MetaData } from '../components/common/meta'
+import { useEffect } from 'react'
 
 /**
 * Single post view (/:slug)
@@ -24,9 +25,9 @@ const Post = ({ data, location, pageContext }) => {
         date: post.created_at_pretty,
         category: post.primary_tag,
         author: post.primary_author,
-        url:post.url,
+        url: post.url,
     }
-    
+
 
     //For the previous and next blog post link
     const prev = pageContext.prev ?
@@ -46,7 +47,15 @@ const Post = ({ data, location, pageContext }) => {
             excerpt: pageContext.next.excerpt
         }
         : null
-      
+
+    useEffect(() => {
+        let links = document.querySelectorAll('article a');
+        links.forEach((link) => {
+            link.setAttribute('target', '_blank');
+            console.log(link);
+        })
+    })
+
 
     return (
         <>
@@ -64,9 +73,9 @@ const Post = ({ data, location, pageContext }) => {
                         {post.feature_image ?
                             <figure className="content-feature-image">
                                 <img src={post.feature_image} alt={post.title} />
-                            </figure> 
-                        : null}
-                        
+                            </figure>
+                            : null}
+
                         <section className="content-full-content">
                             {/* The main post content */}
                             <section
@@ -76,13 +85,11 @@ const Post = ({ data, location, pageContext }) => {
                         </section>
 
                         <section className="content-footer">
-                            <p>If you liked this article, 
-                                <span className="gradient-text"> subscribe to the newsletter </span> 
+                            <p>If you liked this article,
+                                <span className="gradient-text"> subscribe to the newsletter </span>
                                 to get more like it in your inbox. Maybe <a href="https://www.buymeacoffee.com/lindaikechukwu" target="_blank">buy me a coffee</a> too!
                             </p>
                         </section>
-
-                        
                     </article>
 
                     {(prev || next) && (
