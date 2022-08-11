@@ -86,7 +86,7 @@ const Post = ({ data, location, pageContext }) => {
 
                         <section className="content-footer">
                             <p>If you liked this article,
-                                <span className="gradient-text"> subscribe to the newsletter </span>
+                                <span className="gradient-text"> <a href="#subscribe-form">subscribe to the newsletter</a> </span>
                                 to get more like it in your inbox. Maybe <a href="https://www.buymeacoffee.com/lindaikechukwu" target="_blank">buy me a coffee</a> too!
                             </p>
                         </section>
