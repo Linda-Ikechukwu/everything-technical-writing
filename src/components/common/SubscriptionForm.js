@@ -15,13 +15,7 @@ const SubscriptionForm = () => {
                     to help you land your dream job.
                 </p>
                 <div id="revue-embed" className="sub-form-input">
-                   <iframe src="https://everythingtechnicalwriting.substack.com/embed" 
-                           width="480" 
-                           height="320" 
-                           style="border:1px solid #EEE; background:white;" 
-                           frameborder="0" 
-                           scrolling="no">
-                 </iframe>
+                    <iframe className= "" src="https://everythingtechnicalwriting.substack.com/embed"></iframe>
             </div>
             </div>
         </div>
