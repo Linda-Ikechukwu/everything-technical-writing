@@ -15,19 +15,13 @@ const SubscriptionForm = () => {
                     to help you land your dream job.
                 </p>
                 <div id="revue-embed" className="sub-form-input">
-                <form action="https://www.getrevue.co/profile/_mslinda/add_subscriber" method="post" id="revue-form" name="revue-form" target="_blank">
-                    <div className="revue-form-group">
-                        <label htmlFor="member_email" className="visually-hidden">Email address</label>
-                        <input className="revue-form-field" placeholder="Enter your email address..." type="email" name="member[email]" id="member_email"></input>
-                    </div>
-                    <div className="revue-form-actions">
-                        <button type="submit" value="Subscribe" name="member[subscribe]" id="member_submit">Subscribe</button>
-                    </div>
-                    <div className="revue-form-footer sub-form-footer visually-hidden">By subscribing, you agree with Revue’s
-                        <a target="_blank" href="https://www.getrevue.co/terms"> Terms of Service</a> and
-                        <a target="_blank" href="https://www.getrevue.co/privacy"> Privacy Policy</a>
-                    </div>
-                </form>
+                   <iframe src="https://everythingtechnicalwriting.substack.com/embed" 
+                           width="480" 
+                           height="320" 
+                           style="border:1px solid #EEE; background:white;" 
+                           frameborder="0" 
+                           scrolling="no">
+                 </iframe>
             </div>
             </div>
         </div>
