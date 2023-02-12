@@ -9,7 +9,7 @@ const SubscriptionForm = () => {
             <div className="sub-form-bottom">
                 <p>
                     Join over <strong>1000+ subscribers just like you</strong>.
-                    Every two weeks, I'll send you <strong>new articles and expert interviews</strong> published on the blog,
+                    Every month, I'll send you <strong>new articles and expert interviews</strong> published on the blog,
                     so you'd never miss out. I'll also send you a curated list of <strong>other valuable resources on
                     technical writing </strong> across the internet, as well as  <strong>fully-remote technical writing gigs/jobs </strong>
                     to help you land your dream job.
