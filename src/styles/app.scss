@@ -669,7 +669,7 @@ header {
     }
 
     &-byline {
-        font-size: 20px;
+        font-size: 1.8rem;
         line-height: 30px;
         letter-spacing: -0.025em;
         color: #2f2f2f;
@@ -934,7 +934,7 @@ article.content {
     width: 60%;
     margin: 0 auto;
     padding: 6rem 0;
-    font-size: 2rem;
+    font-size: 1.8rem;
     line-height: 3.4rem;
 
     @media (max-width: 1000px) {
