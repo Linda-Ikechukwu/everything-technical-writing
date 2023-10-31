@@ -67,9 +67,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome, isBlog, isPage, post
                                 <div className="nav-subscribe gradient-text">
                                     <a className="" href="#subscribe-form">Subsribe to the Newsletter ➔</a>
                                 </div>
-                                <div className="nav-subscribe gradient-text">
-                                    <a className="" href="https://twitter.com/techwriting_">Follow us on Twiter ➔</a>
-                                </div>
+                                
                             </div>
                             {isHome ?
                                 <div className="page-heading">
@@ -83,6 +81,9 @@ const DefaultLayout = ({ data, children, bodyClass, isHome, isBlog, isPage, post
                                         <div className="nav-subscribe gradient-text">
                                             <a className="" href="#subscribe-form">Subsribe to the Newsletter ➔</a>
                                         </div>
+                                        <div className="nav-subscribe gradient-text">
+                                           <a className="" href="https://twitter.com/techwriting_">Follow us on Twiter ➔</a>
+                                       </div>
                                     </div>
                                 </div>
                                 :
