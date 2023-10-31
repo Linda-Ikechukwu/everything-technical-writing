@@ -88,15 +88,17 @@ const Post = ({ data, location, pageContext }) => {
                             <p>If you found this article helpful, here are a few ways you can support me:
                                <ul>
                                   <li>
-                                   <a href="https://www.buymeacoffee.com/lindaikechukwu" target="_blank">Buy me a coffee</a>
+                                   <span className="gradient-text">
+                                    <a href="https://www.buymeacoffee.com/lindaikechukwu" target="_blank">Buy me a coffee </a> </span>
                                 to help keep this site running.
                                   </li>
                                   <li>
-                                    <a href="https://twitter.com/techwriting_" target="_blank">Follow us on Twitter</a>
+                                    <span className="gradient-text">
+                                    <a href="https://twitter.com/techwriting_" target="_blank">Follow us on Twitter </a></span> 
                                      for more technical writing, technical content marketing, and developer advocacy insights.
                                  </li>
                                  <li><span className="gradient-text">
-                                         <a href="#subscribe-form">Subscribe to the newsletter below</a></span> 
+                                         <a href="#subscribe-form">Subscribe to the newsletter below </a></span> 
                                          to receive more content like this directly in your inbox. 
                                 </li>
                                </ul>
