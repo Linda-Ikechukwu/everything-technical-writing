@@ -49,10 +49,17 @@ const Post = ({ data, location, pageContext }) => {
         : null
 
     useEffect(() => {
+        const myDomain = "https://www.everythingtechnicalwriting.com"
         let links = document.querySelectorAll('article a');
         links.forEach((link) => {
             link.setAttribute('target', '_blank');
             console.log(link);
+        })
+        links.forEach((link) => {
+            if ( link.href.indexOf(myDomain) < 0 ) {
+               link.href += '?rel=everuthingtechnicalwriting.com';
+               console.log(link);
+            }
         })
     })
 
