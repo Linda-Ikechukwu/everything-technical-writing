@@ -57,7 +57,7 @@ const Post = ({ data, location, pageContext }) => {
         })
         links.forEach((link) => {
             if ( link.href.indexOf(myDomain) < 0 ) {
-               link.href += '?rel=everuthingtechnicalwriting.com';
+               link.href += '?rel=everythingtechnicalwriting.com';
                console.log(link);
             }
         })
