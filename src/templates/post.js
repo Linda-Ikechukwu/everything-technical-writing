@@ -105,7 +105,7 @@ const Post = ({ data, location, pageContext }) => {
                                      for more technical writing, technical content marketing, and developer advocacy insights.
                                  </li>
                                  <li><span className="gradient-text">
-                                         <a href="#subscribe-form">Subscribe to the newsletter below </a></span> 
+                                         <a href="https://everythingtechnicalwriting.substack.com/about">Subscribe to the newsletter </a></span> 
                                          to receive more content like this directly in your inbox. 
                                 </li>
                                </ul>

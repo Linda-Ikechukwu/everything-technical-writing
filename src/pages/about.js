@@ -21,15 +21,12 @@ const AboutPage = () => {
                     <p>I am the human behind everythingtechnicalwriting.com.</p>
 
                     <p>
-                        I started my career in tech as a frontend developer.
-                        However, I soon realized that I enjoyed educating and writing to simplify
-                        the complex than writing production code.
+                        I've spent 6 years of my career working in various facets of IT; 
+                        from cloud engineering, to frontend development and now developer educator
+                         where I’m obsessed with lowering the learning curve for complex developer 
+                         tools to aid accelerated developer adoption. 
                     </p>
 
-                    <p>
-                        That was how I found myself in the field of technical writing, focused on developer marketing and developer education.
-                        During this time, I have worked with tech startups in the mobile CI/CD, data pipeline, no-code, and web3 education industries.
-                    </p>
 
                     <h2>Why did I start this blog?</h2>
                     <p>
@@ -39,7 +36,7 @@ const AboutPage = () => {
                         <li>There wasn't much awareness that technical writing is a viable and lucrative career path, just like programming is.</li>
                         <li>There was a deficit of exhaustive resources on the techniques and intricacies of technical writing as a career in the software industry. </li>
                     </ul>
-                    <p> So, I started this website to contribute my quota to fixing both narratives. With everythingtechnicalwriting.com, I will: </p>
+                    <p> I started this website to contribute my quota to fixing both narratives. With everythingtechnicalwriting.com, I will: </p>
                     <ul>
                         <li>Raise awareness on the viability and lucrative nature of various technical writing careers.</li>
                         <li>Write <b>articles that detail my learnings and experience as a technical writer</b> to build an exhaustive technical writing resource bank.</li>
@@ -47,7 +44,7 @@ const AboutPage = () => {
                         <li>Help you <b>become a better and sought-after technical writer</b>.</li>
                     </ul>
                     <p>So, if you're thinking of making a transition to become a technical writer, or you want to skill up in technical writing, then you're at the right place. </p>
-                    <p>Browse through articles on the site, and <a className="gradient-text" href="#subscribe-form">SUBSCRIBE TO THE NEWSLETTER↓</a> for valuable career tips and curated remote technical writing jobs. </p>
+                    <p>Browse through articles on the site, and <a className="gradient-text" href="https://everythingtechnicalwriting.substack.com/about">SUBSCRIBE TO THE NEWSLETTER↓</a> for valuable career tips and curated remote technical writing jobs. </p>
                     <p>If you love what I do and would like to support me, <a href="https://www.buymeacoffee.com/lindaikechukwu">Buy me a coffee.</a></p>
                 </div>
             </div>
